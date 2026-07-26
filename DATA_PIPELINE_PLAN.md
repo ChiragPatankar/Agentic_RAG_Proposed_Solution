@@ -1,13 +1,5 @@
 # Implementation Plan — Data Pipeline Only, 8 Weeks
 
-## Scope change from previous plan
-
-Dropping the agent (L3) and UI entirely changes the calculus: you now have 8 weeks for what was previously squeezed into weeks 1-2. That's not "less work," it's "same core work, done properly" — the things that got cut or manually-hacked in the MVP plan (self-improving alias registry, confidence-based review routing, multi-document-type robustness, real validation tooling) are now in scope because they're the entire deliverable, not a means to an agent demo.
-
-**Deliverable at week 8:** A pipeline that takes raw industrial PDFs from any tenant, in any of your target document types, and reliably outputs validated, normalized, traceable canonical entities — with measured accuracy, a working review workflow for low-confidence extractions, and indexes ready for a retrieval layer to consume (even though you're not building that layer now). This is a sellable/demoable artifact on its own: "upload messy PDFs, get structured, cited, queryable knowledge out."
-
----
-
 ## Week 1 — Foundations + Layout Extraction
 
 - Repo, Postgres schema (DOM storage, entity tables, registry tables) — `tenant_id` on everything from migration #1.
@@ -94,9 +86,3 @@ Since the pipeline's output needs to actually be consumable by a retrieval layer
 - Package ingestion as a clean, runnable service (BullMQ job queue, API endpoint to submit a document, status polling) rather than a collection of scripts, since "just the pipeline" as a deliverable implies it needs to be operable by someone who isn't you reading code.
 
 **Deliverable:** A documented, tested, operable data pipeline — the hard 80% of the whole platform — ready to have a retrieval layer and agent built on top of it whenever that's the next phase.
-
----
-
-## What changed vs. the full-product plan, and why it's better use of the same 8 weeks
-
-The MVP plan spent weeks 1-2 on a *rushed* version of this exact scope, because it also had to leave room for retrieval, agent, and UI. Here, the review-queue/auto-accept split, the golden dataset, the second-manufacturer stress test, and the citation-integrity automation all get built properly instead of stubbed — and those are precisely the things that determine whether this pipeline is actually reusable across real customers later, versus a one-off that only worked on your test documents.
