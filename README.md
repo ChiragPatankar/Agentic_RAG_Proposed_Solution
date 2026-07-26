@@ -26,9 +26,3 @@ Multi-tenancy is enforced at every layer (database, vector store, storage), so e
 - **Handles real document complexity** — tables, diagrams, and procedures are preserved as structured, related objects, not lost in flattening.
 - **Scales as a SaaS product** — clean tenant isolation from day one supports onboarding new customers without re-architecture.
 - **Extensible** — the same canonical model supports future features (ERP integration, product recommendations, predictive maintenance) without rebuilding the foundation.
-
-## Timeline
-
-**8 weeks** to a working, demoable product with two isolated tenants, real documents, grounded cited answers, and a measured quality baseline — prioritizing the data pipeline (structure extraction + canonical model) first, since it's the hardest and most differentiating part, before building retrieval and the agent on top of it.
-
-*(Alternative scope: 8 weeks focused solely on hardening the data pipeline — structure extraction and canonical knowledge model — as a standalone, reusable deliverable, deferring retrieval/agent to a follow-on phase.)*
